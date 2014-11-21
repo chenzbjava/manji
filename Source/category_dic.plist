@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>category</key>
+	<dict>
+		<key>全部</key>
+		<string>all</string>
+		<key>小清新</key>
+		<string>xqx</string>
+		<key>写真</key>
+		<string>xz</string>
+		<key>诱惑</key>
+		<string>yh</string>
+		<key>长腿</key>
+		<string>ct</string>
+		<key>甜素美</key>
+		<string>tsm</string>
+		<key>足球宝贝</key>
+		<string>zqbb</string>
+		<key>清纯</key>
+		<string>qc</string>
+		<key>校花</key>
+		<string>xh</string>
+		<key>性感美女</key>
+		<string>xgmn</string>
+		<key>网络美女</key>
+		<string>wlmn</string>
+		<key>唯美</key>
+		<string>wm</string>
+		<key>气质</key>
+		<string>qz</string>
+		<key>嫩萝莉</key>
+		<string>mll</string>
+		<key>时尚</key>
+		<string>ss</string>
+		<key>长发</key>
+		<string>cf</string>
+		<key>比基尼</key>
+		<string>bjn</string>
+		<key>可爱</key>
+		<string>ka</string>
+		<key>车模</key>
+		<string>cm</string>
+		<key>古典美女</key>
+		<string>gdmn</string>
+		<key>素颜</key>
+		<string>sy</string>
+		<key>非主流</key>
+		<string>fzl</string>
+		<key>短发</key>
+		<string>df</string>
+		<key>高雅大气</key>
+		<string>gddq</string>
+	</dict>
+</dict>
+</plist>

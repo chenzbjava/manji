@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class  DDMenuController;
+@class  HBCenterViewController;
+@class  HBRightViewController;
+@class  HBLeftViewController;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (strong, nonatomic) DDMenuController *mainVC;
+@property (strong, nonatomic) HBCenterViewController *centerVC;
+@property (strong, nonatomic) HBRightViewController *rightVC;
+@property (strong, nonatomic) HBLeftViewController *leftVC;
 
 @end

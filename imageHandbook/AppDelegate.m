@@ -8,6 +8,14 @@
 
 #import "AppDelegate.h"
 
+#import "DDMenuController.h"
+#import "HBLeftViewController.h"
+#import "HBCenterViewController.h"
+#import "HBRightViewController.h"
+
+#import "AFHTTPRequestOperationLogger.h"
+#import "UMFeedback.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -15,9 +23,36 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    [self createPrincipalVC];
+    
+    
     [self.window makeKeyAndVisible];
+    
+    //AFNetWork日志
+    [[AFHTTPRequestOperationLogger sharedLogger] startLogging];
+    [[AFHTTPRequestOperationLogger sharedLogger] setLevel:AFLoggerLevelDebug];
+    //友盟意见反馈
+    [UMFeedback setAppkey:@"5468676ffd98c51c6c0030e0"];
     return YES;
 }
+/**
+ *  创建主要的视图控制器
+ */
+-(void)createPrincipalVC
+{
+    _mainVC = [[DDMenuController alloc] init];
+    
+    _leftVC = [[HBLeftViewController alloc]init];
+    _centerVC = [[HBCenterViewController alloc]init];
+    _rightVC = [[HBRightViewController alloc]init];
+    
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:_centerVC];
+    nav.navigationBar.hidden = YES;
+    _mainVC.leftViewController = _leftVC;
+    _mainVC.rootViewController = nav;
+    _mainVC.rightViewController = _rightVC;
+    self.window.rootViewController = _mainVC;}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

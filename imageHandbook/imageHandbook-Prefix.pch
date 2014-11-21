@@ -13,4 +13,19 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+
+    #import "UIViewExt.h"
+    #import "HBCommon.h"
+    //解析html 包
+    #import "TFHpple.h"
+    #import "TFHppleElement.h"
+    #import "XPathQuery.h"
+    //基础类
+    #import "HBViewController.h"
+    #import "HBTools.h"
+    #import "HBCacheCenter.h"
+
+    //第三方
+    #import "UIImageView+WebCache.h"
+    #import "SVProgressHUD.h"
 #endif
