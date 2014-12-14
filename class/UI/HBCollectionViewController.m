@@ -41,11 +41,11 @@
     _tableViewRight = [self createTableView];
     _tableViewRight.frame =CGRectMake(self.view.width/2, NAVIGATION_BOTTOM, self.view.width/2, NAV_VIEWHEIGHT);
     
-    _collectionBigImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, VIEW_WIDTH,VIEW_HEIGHT)];
+    _collectionBigImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, VIEW_HEIGHT, VIEW_WIDTH,VIEW_HEIGHT)];
     _collectionBigImage.contentMode = UIViewContentModeScaleAspectFit;
     _collectionBigImage.backgroundColor = [UIColor blackColor];
     _collectionBigImage.userInteractionEnabled = YES;
-    _collectionBigImage.hidden = YES;
+//    _collectionBigImage.hidden = YES;
     [self.view addSubview:_collectionBigImage];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(closeImageVIew)];
     [_collectionBigImage addGestureRecognizer:tap];
@@ -128,7 +128,10 @@
 #pragma mark ------btn Action-----------
 -(void)closeImageVIew
 {
-    _collectionBigImage.hidden = YES;
+    [UIView animateWithDuration:.3 animations:^{
+        _collectionBigImage.top = VIEW_HEIGHT;
+    }];
+//    _collectionBigImage.hidden = YES;
 }
 -(void)downloadImageAction:(UIButton *) _btn
 {
@@ -243,7 +246,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     HBImageInfo *item = [self getItemBytableview:tableView andIndex:(int)indexPath.row];
     [_collectionBigImage sd_setImageWithURL:[NSURL URLWithString:item.image_url]];
-    _collectionBigImage.hidden = NO;
+//    cgpoint point = [tableView]
+    [UIView animateWithDuration:.3 animations:^{
+        _collectionBigImage.top = 0;
+    }];
+//    _collectionBigImage.hidden = NO;
 }
 -(HBImageInfo *)getItemBytableview:(UITableView *) _tableview andIndex:(int) _index
 {

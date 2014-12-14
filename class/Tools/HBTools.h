@@ -16,11 +16,13 @@ typedef enum{
 
 @interface HBTools : NSObject
 
+//颜色转译
++ (UIColor *)colorWithHexString:(NSString *)hexString;
 
-+(NSArray *)getCategoryArray;
++(NSArray *)getCategoryArray:(int) _index;
 +(NSString *)getCateENameFromArrayByName:(NSString *) _cName;
++(NSDictionary *)getAllCategoryValue;
 
-+ (void)showRootController:(BOOL)animated;
 + (void)showRootController:(BOOL)animated dataType:(dataType) _dataType andTitle:(NSString *)_title;
 + (void)showRightController:(BOOL)animated;
 + (void)showLeftController:(BOOL)animated;

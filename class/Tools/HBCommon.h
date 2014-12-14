@@ -39,7 +39,6 @@
 #define BASE_URL @"http://image.baidu.com"
 //分类图片下载接口(分页和分类名称)
 #define PAGE_COUNT 20
-#define CATEGORY_IMAGELIST(category,sort,pn) [NSString stringWithFormat:@"/data/imgs?col=美女&tag=%@&sort=%@&tag3=&pn=%@&rn=%d&p=channel&from=1",category,sort, pn,PAGE_COUNT]
-#define CATEGORY_HOT(category,category1) [NSString stringWithFormat:@"/detail/info?fr=channel&tag1=美女&tag2=%@&column=美女&tag=%@&ie=utf-8&oe=utf-8&word=1&t=1415973266526",category,category1]
+#define CATEGORY_IMAGELIST(channel,category,sort,pn) [NSString stringWithFormat:@"/data/imgs?col=%@&tag=%@&sort=%@&tag3=&pn=%@&rn=%d&p=channel&from=1",channel,category,sort, pn,PAGE_COUNT]
 
 #endif

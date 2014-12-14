@@ -38,7 +38,7 @@
     authorLabel = [self createLabel:@"开发 :    Atom" font:K_FONT_14 color:[UIColor grayColor]];
     ArtistLabel = [self createLabel:@"美工 :    文全" font:K_FONT_14 color:[UIColor grayColor]];
     emailLabel = [self createLabel:@"邮箱 :    chen_motu@sina.com" font:K_FONT_14 color:[UIColor grayColor]];
-    versionLabel = [self createLabel:@"v 1.0" font:K_FONT_14 color:[UIColor grayColor]];
+    versionLabel = [self createLabel:@"v 1.1.0" font:K_FONT_14 color:[UIColor grayColor]];
     versionLabel.textAlignment = UITextAlignmentCenter;
     
 }

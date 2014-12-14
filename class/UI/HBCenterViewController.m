@@ -17,7 +17,9 @@
 
 #import "GADBannerView.h"
 
-@interface HBCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
+#define AdvHeight 50.0
+
+@interface HBCenterViewController ()<UITableViewDelegate,UITableViewDataSource,GADBannerViewDelegate>
 {
     UITableView       *_tableViewLeft;
     UITableView       *_tableViewRight;
@@ -38,7 +40,6 @@
     NSMutableArray   *leftArray;
     NSMutableArray   *rightArray;
     
-    
 }
 @end
 
@@ -57,6 +58,7 @@
 {
     [super viewDidLoad];
         if( [HBCacheCenter getStringCacheByKey:CATEGORY_NAME] == nil ||  [[HBCacheCenter getStringCacheByKey:CATEGORY_NAME] isEqualToString:@""]){
+//        [HBCacheCenter cacheString:@"美女" key:LEVEL_ONE_NAME];
         [HBCacheCenter cacheString:@"全部" key:CATEGORY_NAME];
     }
     self.title = [HBCacheCenter getStringCacheByKey:CATEGORY_NAME];
@@ -73,8 +75,10 @@
     _topLoadingView.hidden = YES;
     [_topLoadingView stopAnimating];
     [self.view addSubview:_topLoadingView];
+    
+    
                                                 
-    _bottomShowLoadView = [[UILabel alloc]initWithFrame:CGRectMake(0, self.view.height-20-50, self.view.width, 20)];
+    _bottomShowLoadView = [[UILabel alloc]initWithFrame:CGRectMake(0, self.view.height-20-AdvHeight, self.view.width, 20)];
     _bottomShowLoadView.backgroundColor = [UIColor clearColor];
     _bottomShowLoadView.text = @"正在加载...";
     _bottomShowLoadView.font = [UIFont systemFontOfSize:12];
@@ -84,10 +88,10 @@
     [self.view addSubview:_bottomShowLoadView];
     
     _tableViewLeft = [self createTableView];
-    _tableViewLeft.frame =CGRectMake(0, NAVIGATION_BOTTOM, self.view.width/2, NAV_VIEWHEIGHT-50);
+    _tableViewLeft.frame =CGRectMake(0, NAVIGATION_BOTTOM, self.view.width/2, NAV_VIEWHEIGHT);
     
     _tableViewRight = [self createTableView];
-    _tableViewRight.frame =CGRectMake(self.view.width/2, NAVIGATION_BOTTOM, self.view.width/2, NAV_VIEWHEIGHT-50);
+    _tableViewRight.frame =CGRectMake(self.view.width/2, NAVIGATION_BOTTOM, self.view.width/2, NAV_VIEWHEIGHT);
 
     //设置上拉和下拉刷新
     __block HBCenterViewController *weakSelf = self;
@@ -113,18 +117,30 @@
     
     _backTopBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_backTopBtn setBackgroundImage:[UIImage imageNamed:@"btn_arrow_up"] forState:UIControlStateNormal];
-    _backTopBtn.frame =CGRectMake(self.view.width-45, self.view.height-50-50, 30, 30);
+    _backTopBtn.frame =CGRectMake(self.view.width-45, self.view.height-50-AdvHeight, 30, 30);
     [_backTopBtn addTarget:self action:@selector(backToTop) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_backTopBtn];
     
    [_tableViewLeft triggerPullToRefresh];
     
-    banner = [[GADBannerView alloc] initWithFrame:CGRectMake(0, VIEW_HEIGHT-70,VIEW_WIDTH, 50)];
+    banner = [[GADBannerView alloc] initWithFrame:CGRectMake(0, VIEW_HEIGHT-AdvHeight,VIEW_WIDTH, AdvHeight)];
 //    banner = [[GADBannerView alloc]initWithAdSize:kGADAdSizeInvalid];
     banner.adUnitID = @"ca-app-pub-9929138593574753/1146256228";
     banner.rootViewController = self;
+    banner.delegate = self;
     [self.view addSubview:banner];
     [banner loadRequest:[GADRequest request]];
+}
+-(UIButton *)createButtonTitle:(NSString *) _title tag:(int) _tag
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:_title forState:UIControlStateNormal];
+    [button setTitleColor:[HBTools colorWithHexString:@"999999"] forState:UIControlStateNormal];
+    [button setTitleColor:[HBTools colorWithHexString:@"ffffff"] forState:UIControlStateSelected];
+//    [button setTitleColor:[HBTools colorWithHexString:@"999999"] forState:UIControlStateNormal];
+    button.tag = _tag;
+    [button addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
+    return button;
 }
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -342,4 +358,14 @@
     _backTopBtn.hidden = NO;
 }
 
+#pragma --------------
+- (void)adViewDidReceiveAd:(GADBannerView *)view
+{
+    NSLog(@"adv load success");
+}
+
+- (void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error
+{
+    NSLog(@"adv load fail %@",error.description);
+}
 @end

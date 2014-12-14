@@ -40,18 +40,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.topView.hidden = YES;
+//    self.topView.hidden = YES;
+    self.title = @"设置";
     self.view.backgroundColor = [UIColor whiteColor];
     
     _dataArray = @[@"我的收藏",@"清除缓存",@"意见反馈",@"关于我们"];
     cellBtnArray = @[@"btn_right_collection_n",@"btn_right_clearCache_n",@"btn_right_msgBack_n",@"btn_right_aboutUs_n"];
     cellBtnClickArray = @[@"btn_right_collection_c",@"btn_right_clearCache_c",@"btn_right_msgBack_c",@"btn_right_aboutUs_c"];
     
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(20, NAVIGATION_BOTTOM+250, VIEW_WIDTH-40, 160)];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(20, NAVIGATION_BOTTOM+20, VIEW_WIDTH-40, 160)];
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.delegate =self;
     _tableView.dataSource =self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.bounces = YES;
+    _tableView.bounces = YES;
     [self.view addSubview:_tableView];
 }
 
@@ -134,7 +137,7 @@
     if (buttonIndex == 1) {
         //清楚分类列表中得所以缓存图片，不删除收藏
 //        [[SDImageCache sharedImageCache] clearDisk];
-        NSArray *array = [HBTools getCategoryArray];
+        NSArray *array = [[HBTools getAllCategoryValue] allKeys];
         for (int i = 0; i<array.count; i++) {
             NSArray *cacheList = [HBCacheCenter getCacheModelByKey:[HBTools getCateENameFromArrayByName:[array objectAtIndex:i]]];
             for (int j = 0; j<cacheList.count; j++) {

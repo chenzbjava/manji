@@ -6,17 +6,14 @@
 	<array>
 		<string>全部</string>
 		<string>小清新</string>
-		<string>写真</string>
 		<string>诱惑</string>
 		<string>长腿</string>
 		<string>甜素美</string>
 		<string>足球宝贝</string>
 		<string>清纯</string>
-		<string>校花</string>
 		<string>性感美女</string>
 		<string>网络美女</string>
 		<string>唯美</string>
-		<string>气质</string>
 		<string>嫩萝莉</string>
 		<string>时尚</string>
 		<string>长发</string>
@@ -26,8 +23,6 @@
 		<string>古典美女</string>
 		<string>素颜</string>
 		<string>非主流</string>
-		<string>短发</string>
-		<string>高雅大气</string>
 	</array>
 </dict>
 </plist>

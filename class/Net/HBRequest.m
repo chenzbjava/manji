@@ -40,12 +40,14 @@
 {
     NSString* urlString =  @"";
     if (_class == [HBImageInfo class]) {
-        urlString =CATEGORY_IMAGELIST([parameters objectForKey:@"tag2"],@"0",[parameters objectForKey:@"pn"]);
+        NSString *channel = @"";
+        if ([[HBTools getCateENameFromArrayByName:[parameters objectForKey:@"tag2"]] containsString:@"DM_"]) {
+            channel = @"动漫";
+        }else{
+            channel = @"美女";
+        }
+        urlString =CATEGORY_IMAGELIST(channel,[parameters objectForKey:@"tag2"],@"0",[parameters objectForKey:@"pn"]);
     }
-    if (_class == [HBHotCategoryModel class]) {
-        urlString =  CATEGORY_HOT([parameters objectForKey:@"categoryName"],[parameters objectForKey:@"categoryName"]);
-    }
-    
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     HBApiClient *apiClient = [HBApiClient shareHBApiClient];

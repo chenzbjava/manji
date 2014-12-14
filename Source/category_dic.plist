@@ -8,8 +8,6 @@
 		<string>all</string>
 		<key>小清新</key>
 		<string>xqx</string>
-		<key>写真</key>
-		<string>xz</string>
 		<key>诱惑</key>
 		<string>yh</string>
 		<key>长腿</key>
@@ -20,8 +18,6 @@
 		<string>zqbb</string>
 		<key>清纯</key>
 		<string>qc</string>
-		<key>校花</key>
-		<string>xh</string>
 		<key>性感美女</key>
 		<string>xgmn</string>
 		<key>网络美女</key>
@@ -32,8 +28,6 @@
 		<string>qz</string>
 		<key>嫩萝莉</key>
 		<string>mll</string>
-		<key>时尚</key>
-		<string>ss</string>
 		<key>长发</key>
 		<string>cf</string>
 		<key>比基尼</key>
@@ -48,10 +42,34 @@
 		<string>sy</string>
 		<key>非主流</key>
 		<string>fzl</string>
-		<key>短发</key>
-		<string>df</string>
-		<key>高雅大气</key>
-		<string>gddq</string>
+		<key>海贼王</key>
+		<string>DM_hzw</string>
+		<key>火影忍者</key>
+		<string>DM_hyrz</string>
+		<key>动漫美少女</key>
+		<string>DM_dmmsn</string>
+		<key>宫崎骏</key>
+		<string>DM_gqj</string>
+		<key>二次元</key>
+		<string>DM_ecy</string>
+		<key>名侦探柯南</key>
+		<string>DM_mztkn</string>
+		<key>死神</key>
+		<string>DM_ss</string>
+		<key>妖精的尾巴</key>
+		<string>DM_yjdwb</string>
+		<key>银魂</key>
+		<string>DM_yh</string>
+		<key>古风</key>
+		<string>DM_gf</string>
+		<key>哆啦A梦</key>
+		<string>DM_dlam</string>
+		<key>原画</key>
+		<string>DM_yh</string>
+		<key>手绘</key>
+		<string>DM_sh</string>
+		<key>场景</key>
+		<string>DM_cj</string>
 	</dict>
 </dict>
 </plist>
