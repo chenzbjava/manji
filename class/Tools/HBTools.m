@@ -12,20 +12,17 @@
 #import "AppDelegate.h"
 #import "HBCollectionViewController.h"
 #import "HBLeftViewController.h"
+#import "JSONKit.h"
+#import "HBCategoryInfo.h"
 
 @implementation HBTools
 
-+(NSArray *)getCategoryArray:(int) _index
++(NSArray *)getCategoryArray
 {
-    NSString *fileName = @"";
-    if (_index == 1) {
-        fileName = @"category_array";
-    }else if(_index ==2){
-        fileName = @"cartoonCategory_array";
-    }
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
-    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-    return [data objectForKey:@"category"];
+    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"category" ofType:@"json"]];//[NSData dataWithContentsOfURL:url options:NSDataReadingMappedIfSafe error:nil];
+    NSDictionary *requestDic = [data objectFromJSONData];
+    NSArray *array = [HBCategoryInfo createModelArrayByDic:requestDic];
+    return array;
 }
 
 +(NSString *)getCateENameFromArrayByName:(NSString *) _cName
@@ -58,9 +55,9 @@
     [[self getDDMenuVC] showRootController:animated];
 }
 
-+ (void)showRootController:(BOOL)animated dataType:(dataType) _dataType andTitle:(NSString *)_title
++ (void)showRootController:(BOOL)animated dataType:(dataType) _dataType andCategory:(HBCategoryInfo *)_category
 {
-    [[self getCenterVC] reloadDataType:_dataType AndTitle:_title];
+    [[self getCenterVC] reloadDataType:_dataType AndCategory:_category];
     [[self getDDMenuVC] showRootController:animated];
 }
 

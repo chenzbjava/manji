@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 chenzb. All rights reserved.
 //
 
-#import "AFHTTPClient.h"
+#import "AFNetworking.h"
 
-@interface HBApiClient : AFHTTPClient
+@interface HBApiClient : AFHTTPRequestOperationManager
 
 +(instancetype)shareHBApiClient;
 

@@ -36,9 +36,12 @@
 #define K_FONT_21                  [UIFont systemFontOfSize:21]
 #define K_FONT_BALL                [UIFont systemFontOfSize:16]
 //http
+#define USED_NEW_INTERFACE @"YES"
+
+
 #define BASE_URL @"http://image.baidu.com"
 //分类图片下载接口(分页和分类名称)
-#define PAGE_COUNT 20
-#define CATEGORY_IMAGELIST(channel,category,sort,pn) [NSString stringWithFormat:@"/data/imgs?col=%@&tag=%@&sort=%@&tag3=&pn=%@&rn=%d&p=channel&from=1",channel,category,sort, pn,PAGE_COUNT]
-
+#define PAGE_COUNT 30
+#define CHANNEL @"动漫"
+#define CATEGORY_IMAGELIST @"/data/imgs"
 #endif

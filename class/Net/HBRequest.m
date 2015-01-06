@@ -11,6 +11,7 @@
 #import "JSONKit.h"
 #import "HBImageInfo.h"
 #import "HBHotCategoryModel.h"
+#import "HBCategoryInfo.h"
 
 
 @implementation HBRequest
@@ -38,28 +39,29 @@
                       success:(SuccessedBlock)success
                          fail:(FailedBlock)fail
 {
-    NSString* urlString =  @"";
-    if (_class == [HBImageInfo class]) {
-        NSString *channel = @"";
-        if ([[HBTools getCateENameFromArrayByName:[parameters objectForKey:@"tag2"]] containsString:@"DM_"]) {
-            channel = @"动漫";
-        }else{
-            channel = @"美女";
-        }
-        urlString =CATEGORY_IMAGELIST(channel,[parameters objectForKey:@"tag2"],@"0",[parameters objectForKey:@"pn"]);
-    }
-    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
     HBApiClient *apiClient = [HBApiClient shareHBApiClient];
-    [apiClient getPath:urlString
-            parameters:nil
+    [apiClient GET:CATEGORY_IMAGELIST
+            parameters:[self getParamByTagName:parameters]
                success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                   
-                   NSDictionary *requestDic = [(NSData *)responseObject objectFromJSONData];
-                   success([_class createModelArrayByDic:requestDic]);
+                   success([_class createModelArrayByDic:responseObject]);
                }
                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                    fail(error);
                }];
+}
+
+-(NSDictionary *) getParamByTagName:(NSDictionary *)parameters;
+{
+    NSMutableDictionary *param = [[NSMutableDictionary alloc]init];
+    [param setValue:@"动漫" forKey:@"col"];
+    [param setValue:[parameters objectForKey:@"tag2"] forKey:@"tag"];
+    [param setValue:[parameters objectForKey:@"pn"] forKey:@"pn"];
+    [param setValue:@"0" forKey:@"sort"];
+    [param setValue:[NSString stringWithFormat:@"%d",PAGE_COUNT] forKey:@"rn"];
+    [param setValue:@"" forKey:@"tag3"];
+    [param setValue:@"channel" forKey:@"p"];
+    [param setValue:@"1" forKey:@"from"];
+    
+    return param;
 }
 @end

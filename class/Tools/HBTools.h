@@ -14,16 +14,18 @@ typedef enum{
     collection_list
 } dataType;
 
+@class HBCategoryInfo;
+
 @interface HBTools : NSObject
 
 //颜色转译
 + (UIColor *)colorWithHexString:(NSString *)hexString;
 
-+(NSArray *)getCategoryArray:(int) _index;
++(NSArray *)getCategoryArray;
 +(NSString *)getCateENameFromArrayByName:(NSString *) _cName;
 +(NSDictionary *)getAllCategoryValue;
 
-+ (void)showRootController:(BOOL)animated dataType:(dataType) _dataType andTitle:(NSString *)_title;
++ (void)showRootController:(BOOL)animated dataType:(dataType) _dataType andCategory:(HBCategoryInfo *)_category;
 + (void)showRightController:(BOOL)animated;
 + (void)showLeftController:(BOOL)animated;
 + (void)setEnableGesture:(BOOL)isEnable;

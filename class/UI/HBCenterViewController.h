@@ -8,12 +8,12 @@
 
 #import "HBViewController.h"
 
-@class GADBannerView;
+@class GADBannerView,HBCategoryInfo;
 
 @interface HBCenterViewController : HBViewController
 {
     GADBannerView    *banner;//广告条
 }
--(void)reloadDataType:(dataType) _dataType AndTitle:(NSString *) _title;
+-(void)reloadDataType:(dataType) _dataType AndCategory:(HBCategoryInfo *) _category;
 
 @end

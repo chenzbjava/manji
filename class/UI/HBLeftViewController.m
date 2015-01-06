@@ -7,10 +7,12 @@
 //
 
 #import "HBLeftViewController.h"
+#import "HBCategoryInfo.h"
 
 @interface HBLeftViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    NSArray  *_dataArray;//列表数据
+    NSMutableArray   *catoomCategoryArray;
+    NSMutableArray   *originalityArray;
     
     UITableView     *_tableView;//数据列表
     HBCacheCenter   *_cacheCenter;//缓存对象
@@ -18,6 +20,8 @@
     UIButton        *_belleBtn;
     UIButton        *_cartoonBtn;
     UIView          *mBottomLine;
+    
+    int             cateGoryType;
 }
 @end
 
@@ -38,24 +42,28 @@
     self.title = @"标签";
     self.view.backgroundColor = [UIColor whiteColor];
     
+    [self createListByTabbar];
+    
     
     _belleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _belleBtn.frame =CGRectMake(0, NAVIGATION_BOTTOM, 100, 40);
-    [_belleBtn setTitle:@"美妞" forState:UIControlStateNormal];
+    [_belleBtn setTitle:@"动漫" forState:UIControlStateNormal];
     [_belleBtn addTarget:self action:@selector(changeChannel:) forControlEvents:UIControlEventTouchUpInside];
-    _belleBtn.tag = 1;
+    _belleBtn.tag = 0;
     [_belleBtn setTitleColor:[HBTools colorWithHexString:@"333333"] forState:UIControlStateNormal];
     [_belleBtn setTitleColor:[HBTools colorWithHexString:@"f13131"] forState:UIControlStateSelected];
     [self.view addSubview:_belleBtn];
     
     _cartoonBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _cartoonBtn.frame =CGRectMake(_belleBtn.right, NAVIGATION_BOTTOM, 100, 40);
-    [_cartoonBtn setTitle:@"动漫" forState:UIControlStateNormal];
+    [_cartoonBtn setTitle:@"创意" forState:UIControlStateNormal];
     [_cartoonBtn addTarget:self action:@selector(changeChannel:) forControlEvents:UIControlEventTouchUpInside];
-    _cartoonBtn.tag = 2;
+    _cartoonBtn.tag = 1;
     [_cartoonBtn setTitleColor:[HBTools colorWithHexString:@"333333"] forState:UIControlStateNormal];
     [_cartoonBtn setTitleColor:[HBTools colorWithHexString:@"f13131"] forState:UIControlStateSelected];
     [self.view addSubview:_cartoonBtn];
+    
+    [self changeChannel:_belleBtn];
     
     mBottomLine = [[UIView alloc]initWithFrame:CGRectMake(0, _belleBtn.bottom-3, _belleBtn.width, 3)];
     mBottomLine.backgroundColor = [HBTools colorWithHexString:@"e51350"];
@@ -65,14 +73,24 @@
     mTwoLine.backgroundColor = [HBTools colorWithHexString:@"e6e6e6"];
     [self.view addSubview:mTwoLine];
     
-    _dataArray = [HBTools getCategoryArray:1];
-    
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, _belleBtn.bottom, VIEW_WIDTH-20, NAV_VIEWHEIGHT-_belleBtn.height-10)];
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.delegate =self;
     _tableView.dataSource =self;
     [self.view addSubview:_tableView];
     
+}
+-(void)createListByTabbar
+{
+    catoomCategoryArray = [[NSMutableArray alloc]init];
+    originalityArray = [[NSMutableArray alloc]init];
+    for (HBCategoryInfo *info in [HBTools getCategoryArray]) {
+        if (info.type == 0) {
+            [catoomCategoryArray addObject:info];
+        }else if(info.type ==1){
+            [originalityArray addObject:info];
+        }
+    }
 }
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -87,19 +105,25 @@
 -(void)changeChannel:(UIButton *) _btn
 {
     _btn.selected = YES;
-    if (_btn.tag == 1) {
-        _dataArray = [HBTools getCategoryArray:1];
-//        [HBCacheCenter cacheString:@"美女" key:LEVEL_ONE_NAME];
+    cateGoryType = (int)_btn.tag;
+    if (_btn.tag == 0) {
         _cartoonBtn.selected = NO;
-    }else if (_btn.tag == 2) {
-        _dataArray = [HBTools getCategoryArray:2];
-//        [HBCacheCenter cacheString:@"动漫" key:LEVEL_ONE_NAME];
+    }else if (_btn.tag == 1) {
         _belleBtn.selected = NO;
     }
     [UIView animateWithDuration:0.2 animations:^{
-        mBottomLine.left = _cartoonBtn.width*(_btn.tag-1);
+        mBottomLine.left = _cartoonBtn.width*(_btn.tag);
     }];
     [_tableView reloadData];
+}
+-(NSMutableArray *)categoryType
+{
+    if (cateGoryType == 0) {
+        return catoomCategoryArray;
+    }else if (cateGoryType == 1){
+        return originalityArray;
+    }
+    return nil;
 }
 
 #pragma mark--------------UItableview-------------------------
@@ -109,7 +133,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _dataArray.count;
+    return [self categoryType].count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -117,7 +141,6 @@
     UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:cellName];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName];
-        cell.backgroundColor = [UIColor clearColor];
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.textLabel.textColor = [UIColor grayColor];
         cell.textLabel.left = 20;
@@ -127,16 +150,19 @@
         cell.selectedBackgroundView = bgView;
         cell.textLabel.highlightedTextColor = [UIColor whiteColor];
     }
-     cell.textLabel.text = [_dataArray objectAtIndex:indexPath.row];
-//    if ([[HBCacheCenter getStringCacheByKey:CATEGORY_NAME] isEqualToString:[_dataArray objectAtIndex:indexPath.row]]) {
-//        cell.selected = YES;
-//    }else{
-//        cell.selected = NO;
-//    }
+    HBCategoryInfo *info = [[self categoryType] objectAtIndex:indexPath.row];
+    HBCategoryInfo *category = [HBCacheCenter getCacheModelByKey:CATEGORY_NAME];
+    if ([category.cName isEqualToString:info.cName]) {
+        cell.selected = YES;
+        NSIndexPath *ipath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
+        [tableView selectRowAtIndexPath:ipath animated:NO scrollPosition:UITableViewScrollPositionNone];
+    }
+     cell.textLabel.text = info.cName;
     return  cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [HBTools showRootController:YES dataType:categoty_list andTitle:[_dataArray objectAtIndex:indexPath.row]];
+    HBCategoryInfo *info = [[self categoryType] objectAtIndex:indexPath.row];
+    [HBTools showRootController:YES dataType:categoty_list andCategory:info];
 }
 @end

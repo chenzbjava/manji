@@ -26,6 +26,9 @@ static HBCacheCenter * _default = nil;
 }
 + (id)getCacheModelByKey:(NSString *)_key
 {
+    if(!_key){
+        return nil;
+    }
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [defaults objectForKey:_key];
     return [NSKeyedUnarchiver unarchiveObjectWithData:data];

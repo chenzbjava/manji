@@ -26,6 +26,7 @@
     #import "HBCacheCenter.h"
 
     //第三方
+    #import "AFNetworking.h"
     #import "UIImageView+WebCache.h"
     #import "SVProgressHUD.h"
 #endif

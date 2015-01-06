@@ -7,7 +7,7 @@
 //
 
 #import "HBImageView.h"
-#import "UIImageView+AFNetworking.h"
+//#import "UIImageView+AFNetworking.h"
 
 @interface HBImageView ()
 {

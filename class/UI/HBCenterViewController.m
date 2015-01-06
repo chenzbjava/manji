@@ -16,6 +16,7 @@
 #import "HBShowImageViewController.h"
 
 #import "GADBannerView.h"
+#import "HBCategoryInfo.h"
 
 #define AdvHeight 50.0
 
@@ -40,6 +41,8 @@
     NSMutableArray   *leftArray;
     NSMutableArray   *rightArray;
     
+    HBCategoryInfo   *nowCategory;
+    
 }
 @end
 
@@ -57,12 +60,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        if( [HBCacheCenter getStringCacheByKey:CATEGORY_NAME] == nil ||  [[HBCacheCenter getStringCacheByKey:CATEGORY_NAME] isEqualToString:@""]){
-//        [HBCacheCenter cacheString:@"美女" key:LEVEL_ONE_NAME];
-        [HBCacheCenter cacheString:@"全部" key:CATEGORY_NAME];
+    if(![HBCacheCenter getStringCacheByKey:CATEGORY_NAME]){
+        HBCategoryInfo *info = [[HBCategoryInfo alloc]init];
+        info.cName = @"全部";
+        info.eName = @"all";
+        info.type = 0;
+        info.sourceUrl = @"channel";
+        [HBCacheCenter cacheModel:info key:CATEGORY_NAME];
+        nowCategory = info;
     }
-    self.title = [HBCacheCenter getStringCacheByKey:CATEGORY_NAME];
-    _categoryTitle = [HBCacheCenter getStringCacheByKey:CATEGORY_NAME];
+    self.title = ((HBCategoryInfo *)[HBCacheCenter getCacheModelByKey:CATEGORY_NAME]).cName;
     
     [self.leftbtn setImage:[UIImage imageNamed:@"btn_openLeftVc"] forState:UIControlStateNormal];
     [self.rightbtn setImage:[UIImage imageNamed:@"btn_openRightVc"] forState:UIControlStateNormal];
@@ -131,17 +138,6 @@
     [self.view addSubview:banner];
     [banner loadRequest:[GADRequest request]];
 }
--(UIButton *)createButtonTitle:(NSString *) _title tag:(int) _tag
-{
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:_title forState:UIControlStateNormal];
-    [button setTitleColor:[HBTools colorWithHexString:@"999999"] forState:UIControlStateNormal];
-    [button setTitleColor:[HBTools colorWithHexString:@"ffffff"] forState:UIControlStateSelected];
-//    [button setTitleColor:[HBTools colorWithHexString:@"999999"] forState:UIControlStateNormal];
-    button.tag = _tag;
-    [button addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
-    return button;
-}
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -171,9 +167,9 @@
     [HBTools showRightController:YES];
 }
 #pragma mark---------------loadData------------------------------
--(void)reloadDataType:(dataType) dataType AndTitle:(NSString *) _title
+-(void)reloadDataType:(dataType) dataType AndCategory:(HBCategoryInfo *) _category
 {
-    _categoryTitle = _title;
+    nowCategory = _category;
     _dataType = dataType;
     if (dataType == categoty_list || dataType == hot_list) {
         [_tableViewLeft triggerPullToRefresh];
@@ -199,8 +195,9 @@
 
 -(void)getDataByCache
 {
-    if ([HBCacheCenter getCacheModelByKey:[HBTools getCateENameFromArrayByName:_categoryTitle]]) {
-         _dataArray = [HBCacheCenter getCacheModelByKey:[HBTools getCateENameFromArrayByName:_categoryTitle]];
+    if ([HBCacheCenter getCacheModelByKey:nowCategory.eName]) {
+         _dataArray = [HBCacheCenter getCacheModelByKey:nowCategory.eName];
+        [self saveNewTitleAndCache];
     }
     [self loadData];
 }
@@ -212,7 +209,7 @@
     HBRequest *request = [[HBRequest alloc]init];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
     [dic setObject:[NSString stringWithFormat:@"%d",_pageIndex*PAGE_COUNT] forKey:@"pn"];
-    [dic setObject:_categoryTitle==nil?[HBCacheCenter getStringCacheByKey:CATEGORY_NAME]:_categoryTitle forKey:@"tag2"];
+    [dic setObject:nowCategory==nil?[HBCacheCenter getCacheModelByKey:CATEGORY_NAME]:nowCategory.cName forKey:@"tag2"];
     [request requestWithParameters:dic
                               type:[HBImageInfo class]
                      success:^(id returnData) {
@@ -239,14 +236,13 @@
 {
     [self closeLoadimgAnimate];
     [self saveNewTitleAndCache];
-//    [HBTools reflushHotCategory];
     
     if (_pullUpLoad) {//上拉刷新
         [_dataArray removeAllObjects];
     }
     [_dataArray addObjectsFromArray:_returnData];
     
-    [HBCacheCenter cacheModel:_dataArray key:[HBTools getCateENameFromArrayByName:_categoryTitle]];
+    [HBCacheCenter cacheModel:_dataArray key:nowCategory.eName];
     
     [_tableViewLeft reloadData];
     [_tableViewRight reloadData];
@@ -267,9 +263,9 @@
 -(void)saveNewTitleAndCache
 {
     if (_categoryTitle) {
-        [HBCacheCenter cacheString:_categoryTitle key:CATEGORY_NAME];
+        [HBCacheCenter cacheModel:nowCategory key:CATEGORY_NAME];
     }
-    self.title = [HBCacheCenter getStringCacheByKey:CATEGORY_NAME];
+    self.title = nowCategory.cName;
 }
 #pragma mark------------------TableVIew delegate and DataSource------------------------------
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -313,6 +309,9 @@
  */
 -(HBImageInfo *)getItemBytableview:(UITableView *) _tableview andIndex:(int) _index
 {
+    if (_dataArray.count <= 0) {
+        return nil;
+    }
     if (_tableview == _tableViewLeft) {
         return [_dataArray objectAtIndex:_index*2];
     }else{
@@ -362,10 +361,25 @@
 - (void)adViewDidReceiveAd:(GADBannerView *)view
 {
     NSLog(@"adv load success");
+    [self setFrameisHavaAdv:YES];
 }
 
 - (void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error
 {
     NSLog(@"adv load fail %@",error.description);
+    [self setFrameisHavaAdv:NO];
+}
+
+-(void)setFrameisHavaAdv:(BOOL) flag
+{
+    if (flag) {
+        _bottomShowLoadView.top =self.view.height-20-AdvHeight;
+        _tableViewLeft.height = NAV_VIEWHEIGHT - AdvHeight;
+        _backTopBtn.top = self.view.height-50-AdvHeight;
+    }else{
+        _bottomShowLoadView.top =self.view.height-20;
+        _tableViewLeft.height = NAV_VIEWHEIGHT ;
+        _backTopBtn.top = self.view.height-50;
+    }
 }
 @end
