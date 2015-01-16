@@ -22,8 +22,6 @@ typedef enum{
 + (UIColor *)colorWithHexString:(NSString *)hexString;
 
 +(NSArray *)getCategoryArray;
-+(NSString *)getCateENameFromArrayByName:(NSString *) _cName;
-+(NSDictionary *)getAllCategoryValue;
 
 + (void)showRootController:(BOOL)animated dataType:(dataType) _dataType andCategory:(HBCategoryInfo *)_category;
 + (void)showRightController:(BOOL)animated;

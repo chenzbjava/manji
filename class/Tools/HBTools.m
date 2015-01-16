@@ -19,25 +19,10 @@
 
 +(NSArray *)getCategoryArray
 {
-    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"category" ofType:@"json"]];//[NSData dataWithContentsOfURL:url options:NSDataReadingMappedIfSafe error:nil];
+    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"category" ofType:@"json"]];
     NSDictionary *requestDic = [data objectFromJSONData];
     NSArray *array = [HBCategoryInfo createModelArrayByDic:requestDic];
     return array;
-}
-
-+(NSString *)getCateENameFromArrayByName:(NSString *) _cName
-{
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"category_dic" ofType:@"plist"];
-    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-    NSDictionary *dic = [data objectForKey:@"category"];
-    return [dic objectForKey:_cName];
-}
-
-+(NSDictionary *)getAllCategoryValue
-{
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"category_dic" ofType:@"plist"];
-    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-    return  [data objectForKey:@"category"];
 }
 
 +(HBCenterViewController*)getCenterVC

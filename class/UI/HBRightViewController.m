@@ -14,6 +14,7 @@
 #import "HBRequest.h"
 #import "HBHotCategoryModel.h"
 #import "HBCollectionViewController.h"
+#import "HBCategoryInfo.h"
 
 @interface HBRightViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 {
@@ -136,17 +137,17 @@
 {
     if (buttonIndex == 1) {
         //清楚分类列表中得所以缓存图片，不删除收藏
-//        [[SDImageCache sharedImageCache] clearDisk];
-        NSArray *array = [[HBTools getAllCategoryValue] allKeys];
+        NSArray *array = [HBTools getCategoryArray];
         for (int i = 0; i<array.count; i++) {
-            NSArray *cacheList = [HBCacheCenter getCacheModelByKey:[HBTools getCateENameFromArrayByName:[array objectAtIndex:i]]];
+            HBCategoryInfo *info = [array objectAtIndex:i];
+            NSArray *cacheList = [HBCacheCenter getCacheModelByKey:info.eName];
             for (int j = 0; j<cacheList.count; j++) {
                 HBImageInfo *item = [cacheList objectAtIndex:j];
                 if (!item.isCollection) {
                     [[SDImageCache sharedImageCache] removeImageForKey:item.image_url];
                 }
             }
-            [HBCacheCenter cacheModel:nil key:[HBTools getCateENameFromArrayByName:[array objectAtIndex:i]]];
+            [HBCacheCenter cacheModel:nil key:info.eName];
         }
     }
 }

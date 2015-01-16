@@ -360,13 +360,11 @@
 #pragma --------------
 - (void)adViewDidReceiveAd:(GADBannerView *)view
 {
-    NSLog(@"adv load success");
     [self setFrameisHavaAdv:YES];
 }
 
 - (void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error
 {
-    NSLog(@"adv load fail %@",error.description);
     [self setFrameisHavaAdv:NO];
 }
 
