@@ -49,7 +49,7 @@
                    fail(error);
                }];
 }
-
+#pragma mark------参数拼接---------
 -(NSDictionary *) getParamByTagName:(NSDictionary *)parameters;
 {
     NSMutableDictionary *param = [[NSMutableDictionary alloc]init];

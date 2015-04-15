@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>40DE4FA6-AF45-4397-B91E-A40532E0B5DB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>manji</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B3E0A9E8C870A795231BAC942DC1BFE0DDAC7D8E</key>
+		<string>github.com:chenzbjava/manji.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>manji.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B3E0A9E8C870A795231BAC942DC1BFE0DDAC7D8E</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:chenzbjava/manji.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B3E0A9E8C870A795231BAC942DC1BFE0DDAC7D8E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B3E0A9E8C870A795231BAC942DC1BFE0DDAC7D8E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>manji</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -44,41 +44,23 @@
     return self;
 }
 
-+ (NSArray *)createModelArrayByDic:(NSDictionary *) _data;
-{
-    BOOL flag = NO;
-    NSArray *array = [_data objectForKey:@"imgs"];
-    if (!array || array.count == 0) {
-        flag = YES;
-        array = [_data objectForKey:@"data"];
-    }
++ (NSArray *)createModelArrayByDic:(NSDictionary *) _data {
+    NSArray *array = [_data objectForKey:@"data"];
     
-
     NSMutableArray *modelArray = [[NSMutableArray alloc]initWithCapacity:array.count];
     for (NSDictionary *item in array) {
         if ([item allKeys].count == 0) {
             break;
         }
         HBImageInfo *image = [[HBImageInfo alloc]init];
-        if (flag) {
-            image.image_desc = [item objectForKey:@"fromPageTitleEnc"];
-            image.image_url = [item objectForKey:@"hoverURL"];
-            image.image_width = [item objectForKey:@"width"];
-            image.image_height = [item objectForKey:@"height"];
-            image.image_title = [item objectForKey:@"fromPageTitle"];
-            image.image_date = [item objectForKey:@"bdImgnewsDate"];
-            image.image_category = [item objectForKey:@"fromPageTitle"];
-            [modelArray addObject:image];
-        }else{
-            image.image_desc = [item objectForKey:@"desc"];
-            image.image_url = [item objectForKey:@"imageUrl"];
-            image.image_width = [item objectForKey:@"imageWidth"];
-            image.image_height = [item objectForKey:@"imageHeight"];
-            image.image_title = [item objectForKey:@"title"];
-            image.image_date = [item objectForKey:@"date"];
-            image.image_category = [item objectForKey:@"objTag"];
-            [modelArray addObject:image];
-        }
+        image.image_desc = [item objectForKey:@"desc"];
+        image.image_url = [item objectForKey:@"imageUrl"];
+        image.image_width = [item objectForKey:@"imageWidth"];
+        image.image_height = [item objectForKey:@"imageHeight"];
+        image.image_title = [item objectForKey:@"title"];
+        image.image_date = [item objectForKey:@"date"];
+        image.image_category = [item objectForKey:@"objTag"];
+        [modelArray addObject:image];
 
     }
     return modelArray;
