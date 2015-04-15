@@ -26,7 +26,6 @@
     
     [self createPrincipalVC];
     
-    
     [self.window makeKeyAndVisible];
     
     //AFNetWork日志

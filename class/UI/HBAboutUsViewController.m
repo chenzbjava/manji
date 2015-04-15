@@ -33,7 +33,7 @@
     iconView.image = [UIImage imageNamed:@"icon_aboutUs"];
     [self.view addSubview:iconView];
     
-    appNameLabel = [self createLabel:@"美妞儿" font:K_FONT_14 color:[UIColor grayColor]];
+    appNameLabel = [self createLabel:@"漫集" font:K_FONT_14 color:[UIColor grayColor]];
     appNameLabel.textAlignment = UITextAlignmentCenter;
     authorLabel = [self createLabel:@"开发 :    Atom" font:K_FONT_14 color:[UIColor grayColor]];
     ArtistLabel = [self createLabel:@"美工 :    文全" font:K_FONT_14 color:[UIColor grayColor]];

@@ -39,9 +39,9 @@
 #define USED_NEW_INTERFACE @"YES"
 
 
-#define BASE_URL @"http://image.baidu.com"
+#define BASE_URL @"http://api.hsuns.com:8280"
 //分类图片下载接口(分页和分类名称)
 #define PAGE_COUNT 30
 #define CHANNEL @"动漫"
-#define CATEGORY_IMAGELIST @"/data/imgs"
+#define CATEGORY_IMAGELIST @"/api/manji/imageList"
 #endif

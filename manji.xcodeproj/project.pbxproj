@@ -324,20 +324,20 @@
 		FB679A791994736D00306A17 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
 		FB679A7A1994736D00306A17 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		FB679A7C1994770C00306A17 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
-		FB91FD3F198F298B00045C8E /* imageHandbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imageHandbook.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB91FD3F198F298B00045C8E /* manji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = manji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB91FD42198F298B00045C8E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FB91FD44198F298B00045C8E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FB91FD46198F298B00045C8E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		FB91FD4A198F298B00045C8E /* imageHandbook-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "imageHandbook-Info.plist"; sourceTree = "<group>"; };
+		FB91FD4A198F298B00045C8E /* manji-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "manji-Info.plist"; sourceTree = "<group>"; };
 		FB91FD4C198F298B00045C8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FB91FD4E198F298B00045C8E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FB91FD50198F298B00045C8E /* imageHandbook-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "imageHandbook-Prefix.pch"; sourceTree = "<group>"; };
+		FB91FD50198F298B00045C8E /* manji-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "manji-Prefix.pch"; sourceTree = "<group>"; };
 		FB91FD51198F298B00045C8E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FB91FD52198F298B00045C8E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FB91FD54198F298B00045C8E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		FB91FD5A198F298B00045C8E /* imageHandbookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = imageHandbookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB91FD5A198F298B00045C8E /* manjiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = manjiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB91FD5B198F298B00045C8E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		FB91FD63198F298B00045C8E /* imageHandbookTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "imageHandbookTests-Info.plist"; sourceTree = "<group>"; };
+		FB91FD63198F298B00045C8E /* manjiTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "manjiTests-Info.plist"; sourceTree = "<group>"; };
 		FB91FD65198F298B00045C8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FB91FD67198F298B00045C8E /* imageHandbookTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = imageHandbookTests.m; sourceTree = "<group>"; };
 		FB91FD78198F2E1800045C8E /* DDMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMenuController.h; sourceTree = "<group>"; };
@@ -804,8 +804,8 @@
 			children = (
 				E76519C61A03625300ABF8F0 /* class */,
 				E7BC42A11A02218600DAB43C /* Source */,
-				FB91FD48198F298B00045C8E /* imageHandbook */,
-				FB91FD61198F298B00045C8E /* imageHandbookTests */,
+				FB91FD48198F298B00045C8E /* manji */,
+				FB91FD61198F298B00045C8E /* manjiTests */,
 				FB91FD41198F298B00045C8E /* Frameworks */,
 				FB91FD40198F298B00045C8E /* Products */,
 			);
@@ -814,8 +814,8 @@
 		FB91FD40198F298B00045C8E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FB91FD3F198F298B00045C8E /* imageHandbook.app */,
-				FB91FD5A198F298B00045C8E /* imageHandbookTests.xctest */,
+				FB91FD3F198F298B00045C8E /* manji.app */,
+				FB91FD5A198F298B00045C8E /* manjiTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -840,7 +840,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FB91FD48198F298B00045C8E /* imageHandbook */ = {
+		FB91FD48198F298B00045C8E /* manji */ = {
 			isa = PBXGroup;
 			children = (
 				FB91FD51198F298B00045C8E /* AppDelegate.h */,
@@ -848,33 +848,33 @@
 				FB91FD54198F298B00045C8E /* Images.xcassets */,
 				FB91FD49198F298B00045C8E /* Supporting Files */,
 			);
-			path = imageHandbook;
+			path = manji;
 			sourceTree = "<group>";
 		};
 		FB91FD49198F298B00045C8E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FB91FD4A198F298B00045C8E /* imageHandbook-Info.plist */,
+				FB91FD4A198F298B00045C8E /* manji-Info.plist */,
 				FB91FD4B198F298B00045C8E /* InfoPlist.strings */,
 				FB91FD4E198F298B00045C8E /* main.m */,
-				FB91FD50198F298B00045C8E /* imageHandbook-Prefix.pch */,
+				FB91FD50198F298B00045C8E /* manji-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		FB91FD61198F298B00045C8E /* imageHandbookTests */ = {
+		FB91FD61198F298B00045C8E /* manjiTests */ = {
 			isa = PBXGroup;
 			children = (
 				FB91FD67198F298B00045C8E /* imageHandbookTests.m */,
 				FB91FD62198F298B00045C8E /* Supporting Files */,
 			);
-			path = imageHandbookTests;
+			path = manjiTests;
 			sourceTree = "<group>";
 		};
 		FB91FD62198F298B00045C8E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FB91FD63198F298B00045C8E /* imageHandbookTests-Info.plist */,
+				FB91FD63198F298B00045C8E /* manjiTests-Info.plist */,
 				FB91FD64198F298B00045C8E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -920,9 +920,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FB91FD3E198F298B00045C8E /* imageHandbook */ = {
+		FB91FD3E198F298B00045C8E /* manji */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FB91FD6B198F298B00045C8E /* Build configuration list for PBXNativeTarget "imageHandbook" */;
+			buildConfigurationList = FB91FD6B198F298B00045C8E /* Build configuration list for PBXNativeTarget "manji" */;
 			buildPhases = (
 				FB91FD3B198F298B00045C8E /* Sources */,
 				FB91FD3C198F298B00045C8E /* Frameworks */,
@@ -932,14 +932,14 @@
 			);
 			dependencies = (
 			);
-			name = imageHandbook;
+			name = manji;
 			productName = imageHandbook;
-			productReference = FB91FD3F198F298B00045C8E /* imageHandbook.app */;
+			productReference = FB91FD3F198F298B00045C8E /* manji.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FB91FD59198F298B00045C8E /* imageHandbookTests */ = {
+		FB91FD59198F298B00045C8E /* manjiTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FB91FD6E198F298B00045C8E /* Build configuration list for PBXNativeTarget "imageHandbookTests" */;
+			buildConfigurationList = FB91FD6E198F298B00045C8E /* Build configuration list for PBXNativeTarget "manjiTests" */;
 			buildPhases = (
 				FB91FD56198F298B00045C8E /* Sources */,
 				FB91FD57198F298B00045C8E /* Frameworks */,
@@ -950,9 +950,9 @@
 			dependencies = (
 				FB91FD60198F298B00045C8E /* PBXTargetDependency */,
 			);
-			name = imageHandbookTests;
+			name = manjiTests;
 			productName = imageHandbookTests;
-			productReference = FB91FD5A198F298B00045C8E /* imageHandbookTests.xctest */;
+			productReference = FB91FD5A198F298B00045C8E /* manjiTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -972,7 +972,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FB91FD3A198F298B00045C8E /* Build configuration list for PBXProject "imageHandbook" */;
+			buildConfigurationList = FB91FD3A198F298B00045C8E /* Build configuration list for PBXProject "manji" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -986,8 +986,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FB91FD3E198F298B00045C8E /* imageHandbook */,
-				FB91FD59198F298B00045C8E /* imageHandbookTests */,
+				FB91FD3E198F298B00045C8E /* manji */,
+				FB91FD59198F298B00045C8E /* manjiTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1126,7 +1126,7 @@
 /* Begin PBXTargetDependency section */
 		FB91FD60198F298B00045C8E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FB91FD3E198F298B00045C8E /* imageHandbook */;
+			target = FB91FD3E198F298B00045C8E /* manji */;
 			targetProxy = FB91FD5F198F298B00045C8E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1239,13 +1239,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"FRAMEWORK_SEARCH_PATHS[arch=*]" = /usr/lib/libxml2.dylib;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "imageHandbook/imageHandbook-Prefix.pch";
+				GCC_PREFIX_HEADER = "manji/manji-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"${SDK_DIR}/usr/include/libxml2",
 				);
-				INFOPLIST_FILE = "imageHandbook/imageHandbook-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/manjiTests/manjiTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1257,8 +1257,8 @@
 					"-lxml2",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3a1fb448-89ba-4f35-bbe7-7b48153ba16a";
+				PRODUCT_NAME = manji;
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1272,13 +1272,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "imageHandbook/imageHandbook-Prefix.pch";
+				GCC_PREFIX_HEADER = "manji/manji-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"${SDK_DIR}/usr/include/libxml2",
 				);
-				INFOPLIST_FILE = "imageHandbook/imageHandbook-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/manjiTests/manjiTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1290,8 +1290,8 @@
 					"-lxml2",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3a1fb448-89ba-4f35-bbe7-7b48153ba16a";
+				PRODUCT_NAME = manji;
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1300,20 +1300,20 @@
 		FB91FD6F198F298B00045C8E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/imageHandbook.app/imageHandbook";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/manji.app/manji";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "imageHandbook/imageHandbook-Prefix.pch";
+				GCC_PREFIX_HEADER = "manji/manji-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "imageHandbookTests/imageHandbookTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "manjiTests/manjiTests-Info.plist";
+				PRODUCT_NAME = manjiTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1322,16 +1322,16 @@
 		FB91FD70198F298B00045C8E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/imageHandbook.app/imageHandbook";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/manji.app/manji";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "imageHandbook/imageHandbook-Prefix.pch";
-				INFOPLIST_FILE = "imageHandbookTests/imageHandbookTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "manji/manji-Prefix.pch";
+				INFOPLIST_FILE = "manjiTests/manjiTests-Info.plist";
+				PRODUCT_NAME = manjiTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1340,7 +1340,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FB91FD3A198F298B00045C8E /* Build configuration list for PBXProject "imageHandbook" */ = {
+		FB91FD3A198F298B00045C8E /* Build configuration list for PBXProject "manji" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FB91FD69198F298B00045C8E /* Debug */,
@@ -1349,7 +1349,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FB91FD6B198F298B00045C8E /* Build configuration list for PBXNativeTarget "imageHandbook" */ = {
+		FB91FD6B198F298B00045C8E /* Build configuration list for PBXNativeTarget "manji" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FB91FD6C198F298B00045C8E /* Debug */,
@@ -1358,7 +1358,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FB91FD6E198F298B00045C8E /* Build configuration list for PBXNativeTarget "imageHandbookTests" */ = {
+		FB91FD6E198F298B00045C8E /* Build configuration list for PBXNativeTarget "manjiTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FB91FD6F198F298B00045C8E /* Debug */,

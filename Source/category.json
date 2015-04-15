@@ -19,18 +19,6 @@
             "sourceUrl":"category"
         },
         {
-            "cName":"日本漫画",
-            "eName":"rbmh",
-            "type":0,
-            "sourceUrl":"category"
-        },
-        {
-            "cName":"动漫美少女",
-            "eName":"dmmsv",
-            "type":0,
-            "sourceUrl":"category"
-        },
-        {
             "cName":"宫崎骏",
             "eName":"gqj",
             "type":1,
@@ -129,12 +117,6 @@
         {
             "cName":"cosplay",
             "eName":"cosplay",
-            "type":1,
-            "sourceUrl":"category"
-        },
-        {
-            "cName":"手办",
-            "eName":"sb",
             "type":1,
             "sourceUrl":"category"
         }
